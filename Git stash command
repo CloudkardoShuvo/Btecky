@@ -1,0 +1,49 @@
+$ git stash --patch
+diff --git a/.gitignore b/.gitignore
+index 32174593..8d81be6e 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,6 +3,7 @@
+ # dependencies
+ node_modules/
+ /.pnp
++f,fmfm
+ .pnp.js
+
+ # testing
+(1/1) Stash this hunk [y,n,q,a,d,e,?]?
+$ git stash list
+stash@{0}: WIP on master: d7435644 Feat: configure graphql endpoint
+$ git stash save "remove semi-colon from schema"
+Saved working directory and index state On master: remove semi-colon from schema
+
+$ git stash list
+stash@{0}: On master: remove semi-colon from schema
+stash@{1}: WIP on master: d7435644 Feat: configure graphql endpoint
+$ git stash show stash@{0} --patch
+diff --git a/console/console-init/ui/package.json b/console/console-init/ui/package.json
+index 755912b97..5b5af1bd6 100644
+--- a/console/console-init/ui/package.json
++++ b/console/console-init/ui/package.json
+@@ -1,5 +1,5 @@
+ {
+- "name": "my-usepatternfly",
++ "name": "my-usepatternfly-2",
+  "version": "0.1.0",
+  "private": true,
+  "proxy": "http://localhost:4000"
+diff --git a/console/console-init/ui/src/AppNavHeader.tsx b/console/console-init/ui/src/AppNavHeader.tsx
+index a4764d2f3..da72b7e2b 100644
+--- a/console/console-init/ui/src/AppNavHeader.tsx
++++ b/console/console-init/ui/src/AppNavHeader.tsx
+@@ -9,8 +9,8 @@ import { css } from "@patternfly/react-styles";
+
+interface IAppNavHeaderProps extends PageHeaderProps {
+- toolbar?: React.ReactNode;
+- avatar?: React.ReactNode;
++ toolbar?: React.ReactNode;
++ avatar?: React.ReactNode;
+}
+
+export class AppNavHeader extends React.Component<IAppNavHeaderProps>{
+  render()
